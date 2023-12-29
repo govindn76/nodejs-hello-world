@@ -1,6 +1,8 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
+var os = require("os");
+var hostname = os.hostname();
     
 Object.assign=require('object-assign')
 
@@ -14,7 +16,7 @@ var rando = Math.floor(Math.random() * (100 - 1) + 1);
 console.log('Generated pod ID - %s', rando);
 
 app.get('/', function (req, res) {
-    res.render('index.html', { messageFromNode : 'Hello from pod ID - ' + rando });
+    res.render('index.html', { messageFromNode : 'Hello from pod ID - ' + hostname + rando });
     console.log('Calling index.html from pod ID - %s', rando);
 });
 
